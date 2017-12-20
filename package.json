@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.2",
-    "bootstrap": "v4.0.0-alpha.6",
+    "bootstrap": "v4.0.0-alpha.2",
     "concurrently": "^3.5.1",
     "cors": "^2.8.4",
     "express": "^4.16.2",

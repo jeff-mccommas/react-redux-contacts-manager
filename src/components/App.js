@@ -5,7 +5,7 @@ import Header from './common/header';
 import HomePage from './home/HomePage';
 import AboutPage from './about/AboutPage';
 import ContactsPage from './contacts/ContactsPage'
-
+import './App.css';
 class App extends React.Component {
 	render() {
 		return (

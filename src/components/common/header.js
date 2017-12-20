@@ -3,31 +3,74 @@
  * Created by jmccommas on 12/19/17 7:18 AM*/
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Nav, NavItem, NavLink } from 'reactstrap';
-import LoadingDots from './LoadingDots';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
 
-const Header = ({loading}) => {
-	const activeStyle = { color: 'blue' };
-	return (
-		<Nav>
-			<NavItem>
-				<NavLink href="/" activeStyle={activeStyle} exact>Home</NavLink>
-			</NavItem>
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props);
 
-			<NavItem>
-				<NavLink href="/contacts" activeStyle={activeStyle}>Contacts</NavLink>
-			</NavItem>
-
-			<NavItem>
-				<NavLink href="/about" activeStyle={activeStyle}>About</NavLink>
-			</NavItem>
-			{loading && <LoadingDots interval={100} dots={20}/>}
-		</Nav>
-	);
-};
-
-Header.propTypes = {
-	loading: PropTypes.bool.isRequired
-};
-
-export default Header;
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+  render() {
+    return (
+      <div>
+        <Navbar color="faded" light expand="md">
+          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/">Home</NavLink>
+              </NavItem>
+        
+              <NavItem>
+                <NavLink href="/contacts">Contacts</NavLink>
+              </NavItem>
+        
+              <NavItem>
+                <NavLink href="/about">About</NavLink>
+              </NavItem>
+              
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu >
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    );
+  }
+}

@@ -26,3 +26,24 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.navbar {
+  display: flex !important;
+}
+
+.navbar-collapse {
+  display: flex !important;
+  flex-basis: auto !important;
+  flex-grow: 1 !important;
+  align-items: center !important;
+}
+
+.navbar-nav {
+  flex-direction: row !important;
+  margin-left: auto!important;
+  display: flex !important;
+  -ms-flex-direction: column !important;
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+  list-style: none !important;
+}
